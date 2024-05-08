@@ -44,8 +44,8 @@ const DialogBox = () => {
           <input type="text" value={question} onChange={(e) => setQuestion(e.target.value)} style={{ marginLeft: '10px' }} />
         </label>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <button type="submit" style={{ backgroundColor: 'blue', color: 'white', padding: '5px 10px', borderRadius: '5px', border: 'none', marginRight: '10px' }}>Enviar</button>
-          <button onClick={() => { setQuestion(''); setAnswer(''); }} style={{ backgroundColor: 'red', color: 'white', padding: '5px 10px', borderRadius: '5px', border: 'none' }}>Limpiar</button>
+          <button type="submit" style={{ backgroundColor: 'blue', color: 'white', padding: '20px 10px', borderRadius: '5px', border: 'none', marginRight: '10px' }}>Enviar</button>
+          <button onClick={() => { setQuestion(''); setAnswer(''); }} style={{ backgroundColor: 'red', color: 'white', padding: '20px 10px', borderRadius: '5px', border: 'none' }}>Limpiar</button>
         </div>
       </form>
       {answer && (
@@ -54,12 +54,14 @@ const DialogBox = () => {
           <p style={{ color: 'black', marginTop: '5px' }}>{answer}</p>
         </div>
       )}
+
+          {/* Footer */}
+          <footer style={{ marginTop: '20px', textAlign: 'center', color: '#888', fontSize: '14px' }}>
+        Desarrollado por Luis Copetti - Utilizando la API de Gemini
+      </footer>
+
     </div>
   );
-  
-  
-  
-    
 };
 
 export default DialogBox;
