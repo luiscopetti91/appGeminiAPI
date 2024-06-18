@@ -3,12 +3,14 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
+
+
 const DialogBox = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [model, setModel] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [clearing, setClearing] = useState(false); // Nuevo estado para controlar la limpieza
+  const [clearing, setClearing] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -53,24 +55,19 @@ const DialogBox = () => {
   };
 
   const handleClear = () => {
-    setClearing(true); // Indicar que se está limpiando
+    setClearing(true);
     setQuestion('');
     setAnswer('');
     setError(null);
     setTimeout(() => {
-      setClearing(false); // Después de un breve retraso, indicar que la limpieza ha terminado
+      setClearing(false);
     }, 1000);
   };
 
   return (
     <div style={styles.container}>
-      {/* Welcome Section */}
-      <div style={styles.welcome}>
-        <h1>Bienvenido/a</h1>
-        <p>La web está en preparación. Mientras tanto, prueba el cuadro de diálogo para interactuar con la IA.</p>
-      </div>
+ 
 
-      {/* Form Section */}
       <form onSubmit={handleSubmit} style={styles.form}>
         <label style={styles.label}>
           Ingrese su pregunta:
@@ -96,10 +93,8 @@ const DialogBox = () => {
         </div>
       </form>
 
-      {/* Error Section */}
       {error && <div style={styles.error}>{error}</div>}
       
-      {/* Answer Section */}
       {answer && (
         <div style={styles.answerSection}>
           <strong style={styles.answerLabel}>Respuesta:</strong>
@@ -107,15 +102,12 @@ const DialogBox = () => {
         </div>
       )}
 
-      {/* Footer */}
       <footer style={styles.footer}>
         Desarrollado por Luis Copetti
       </footer>
     </div>
   );
 };
-
-// Styles
 const styles = {
   container: {
     backgroundColor: '#f0f0f0',
@@ -125,9 +117,14 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  welcome: {
-    textAlign: 'center',
+  section: {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '10px',
     marginBottom: '20px',
+    width: '100%',
+    maxWidth: '800px',
+    boxSizing: 'border-box',
   },
   form: {
     marginBottom: '10px',
@@ -161,7 +158,7 @@ const styles = {
     transition: 'background-color 0.5s',
   },
   clearing: {
-    backgroundColor: '#ff8080', // Cambio de color durante la limpieza
+    backgroundColor: '#ff8080',
   },
   error: {
     color: 'red',
@@ -184,5 +181,6 @@ const styles = {
     fontSize: '14px',
   },
 };
+
 
 export default DialogBox;
